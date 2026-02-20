@@ -54,7 +54,7 @@ export function CreateAccount(props: Props) {
   return (
     <div>
       <h1>Create Account</h1>
-      <p>Step 1 content: Create an account</p>
+      
       <form onSubmit={handleSubmit}>
         <TextInput
           label="Name"

@@ -56,7 +56,7 @@ export function CreateProfile(props: Props) {
   return (
     <div>
       <h1>Create Profile</h1>
-      <p>Step 2 content: Create a profile</p>
+      
       <form onSubmit={handleSubmit}>
         <TextInput
           label="Username"

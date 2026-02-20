@@ -59,10 +59,12 @@ export function CreatePreference(props: Props) {
   return (
     <div>
       <h1>Create Preference</h1>
-      <p>Step 3 content: Set up preferences</p>
+      
       <form onSubmit={handleSubmit}>
         <Text>Preferred Age Range</Text>
+        <br />
         <RangeSlider
+          labelAlwaysOn
           minRange={5}
           min={13}
           max={120}
