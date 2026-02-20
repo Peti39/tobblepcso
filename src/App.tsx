@@ -40,7 +40,7 @@ function App() {
     age: 0,
     gender: "",
     bio: "",
-    ageRange: [0, 100],
+    ageRange: [13, 120],
     preferredGender: [],
     isRegisteredToNewsletter: false,
     newsEmail: "",
