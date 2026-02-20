@@ -1,5 +1,13 @@
-import { Button, Group, MultiSelect, RangeSlider, Text } from "@mantine/core";
+import {
+  Button,
+  Group,
+  Modal,
+  MultiSelect,
+  RangeSlider,
+  Text,
+} from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { useDisclosure } from "@mantine/hooks";
 
 type Props = {
   nextStep: () => void;
@@ -18,6 +26,7 @@ type Props = {
 
 export function CreatePreference(props: Props) {
   const { nextStep, prevStep, data, modifyData } = props;
+  
 
   const form = useForm({
     initialValues: {
@@ -31,7 +40,9 @@ export function CreatePreference(props: Props) {
         return null;
       },
       preferredGender: (value) =>
-         !value || (Array.isArray(value) && value.length === 0) ? "Preferred gender is required" : null,
+        !value || (Array.isArray(value) && value.length === 0)
+          ? "Preferred gender is required"
+          : null,
     },
   });
 
@@ -52,12 +63,15 @@ export function CreatePreference(props: Props) {
       <form onSubmit={handleSubmit}>
         <Text>Preferred Age Range</Text>
         <RangeSlider
+          minRange={5}
           min={13}
           max={120}
           step={1}
-          defaultValue={data.ageRange}
+          defaultValue={[13,120]}
           value={form.values.ageRange}
-          onChange={(value) => form.setFieldValue("ageRange", value as [number, number])}
+          onChange={(value) =>
+            form.setFieldValue("ageRange", value as [number, number])
+          }
           mt="md"
         />
         {form.errors.ageRange && (
@@ -69,10 +83,11 @@ export function CreatePreference(props: Props) {
         <MultiSelect
           label="Preferred Genders"
           placeholder="Select preferred genders"
-          data={["Male", "Female", "Other"]}
+          data={["male", "female", "other"]}
           {...form.getInputProps("preferredGender")}
           mt="sm"
         />
+        
         <Group justify="center" mt="xl">
           <Button variant="default" onClick={handleBack}>
             Back

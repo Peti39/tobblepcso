@@ -5,10 +5,12 @@ import {
   Button,
   Group,
   Flex,
+  Modal,
 } from "@mantine/core";
 import { CreateAccount } from "./steps/createAccount";
 import { CreateProfile } from "./steps/createProfile";
 import { CreatePreference } from "./steps/createPreference";
+import { NewsEmail } from "./comps/newsEamil";
 
 interface Data {
   name: string;
@@ -22,6 +24,9 @@ interface Data {
 
   ageRange: [number, number];
   preferredGender: string[];
+
+  isRegisteredToNewsletter: boolean;
+  newsEmail: string;
 }
 
 function App() {
@@ -37,6 +42,8 @@ function App() {
     bio: "",
     ageRange: [0, 100],
     preferredGender: [],
+    isRegisteredToNewsletter: false,
+    newsEmail: "",
   });
 
   const [active, setActive] = useState(0);
@@ -106,6 +113,12 @@ function App() {
             </Stepper.Completed>
           </Stepper>
         </Flex>
+          {active !== 3 && (
+            <NewsEmail
+              data={data}
+              modifyData={modifyData}
+            />
+          )}
       </div>
     </>
   );

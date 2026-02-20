@@ -81,9 +81,7 @@ export function CreateAccount(props: Props) {
           withAsterisk
         />
         <Group justify="center" mt="xl">
-          <Button variant="default" onClick={prevStep}>
-            Back
-          </Button>
+          
           <Button type="submit">Next step</Button>
         </Group>
       </form>
